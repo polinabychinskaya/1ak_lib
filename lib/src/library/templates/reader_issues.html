@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block TITLE %} Мои книги {% endblock TITLE %}
+{% block HEAD %} 
+<style>
+    .wrap{
+        margin: 4%;
+    }
+    #button{
+    color: #508d96;
+    border-color: #508d96;
+    background-color: white;
+  }
+
+  #button:hover{
+    color: white;
+    background-color: #508d96;
+}
+#button_new{
+    margin-left: 42%;
+    color: #508d96;
+    border-color: #508d96;
+    background-color: white;
+}
+
+#button_new:hover{
+    color: white;
+    background-color: #508d96;
+}
+</style>
+{% endblock HEAD %}
+{% block BODY %}
+<br>
+<br>
+<br>
+<div class="wrap">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Читатель</th>
+        <th scope="col">Название</th>
+        <th scope="col">ISBN</th>
+        <th scope="col">Дата выдачи</th>
+        <th scope="col">Дата возврата</th>
+        <th scope="col">Действия</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in issues %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{user.get_full_name}}</td>
+        <td>{{i.2}}</td>
+        <td>{{i.3}}</td>
+        <td>{{i.4}}</td>
+        <td>{{i.5}}</td>
+        <th><a id="button" href="{% url 'delete_issued_book' pk=i.6 %}" class="btn btn-danger">Удалить запись</a></th>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock BODY%}
+

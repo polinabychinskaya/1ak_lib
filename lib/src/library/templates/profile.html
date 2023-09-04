@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block TITLE %} Мой профиль {% endblock TITLE %}
+{% block HEAD %}
+<style>
+    .card{
+        margin-top: 7.5%; 
+        margin-left: 41%;
+        margin-bottom: 4%;
+    }
+    #buttonDiv{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    #button{
+        border-color: #508d96;
+        color:#508d96;
+        margin: 3%;
+        width: 60%;
+    }
+
+    #button:hover{
+        background-color: #508d96;
+        color:white
+    }
+</style>
+{% endblock HEAD %}
+{% block BODY %}
+
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="{% static 'img/placeholder.jpeg' %}" alt="Card image cap">
+    <div class="card-body">
+      <p class="card-text">
+        ID: {{user.id}} <br>
+        Имя пользователя: {{user}} <br>
+        ФИО: {{user.reader.full_name}} <br>
+        Номер телефона: {{user.reader.phone}}
+      </p>
+      <div id="buttonDiv">
+      <a id="button" href="{% url 'reader_issued_book' %}" style="width: 9rem;" class="btn btn-outline-primary mt-3">Смотреть мои книги</a>
+      <a id="button" href="{% url 'logout' %}" style="width: 9rem;" class="btn btn-outline-primary mt-3">Выйти из системы</a>
+    </div>
+    </div>
+  </div>
+
+{% endblock BODY %}

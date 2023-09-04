@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block TITLE %} Редактировать книги {% endblock TITLE %}
+{% block HEAD %} 
+<style>
+    .wrap{
+        margin: 4%;
+    }
+    #button{
+    color: #508d96;
+    border-color: #508d96;
+    background-color: white;
+  }
+
+  #button:hover{
+    color: white;
+    background-color: #508d96;
+}
+#button_new{
+    margin-left: 42%;
+    color: #508d96;
+    border-color: #508d96;
+    background-color: white;
+}
+
+#button_new:hover{
+    color: white;
+    background-color: #508d96;
+}
+</style>
+{% endblock HEAD %}
+{% block BODY %}
+<br>
+<br>
+<br>
+<div class="wrap">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Название книги</th>
+        <th scope="col">Автор</th>
+        <th scope="col">ISBN</th>
+        <th scope="col">В наличии</th>
+        <th scope="col">Действия</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in object_list %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{i.name}}</td>
+        <td>{{i.author}}</td>
+        <td>{{i.isbn}}</td>
+        <td>{{i.available}}</td>
+        <td>
+            <a id="button" href="{% url 'update_book' pk=i.pk %}" class="btn btn-danger">Обновить</a>
+            <a id="button" href="{% url 'delete_book' pk=i.pk %}" class="btn btn-danger">Удалить</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <br>
+<a href="{% url 'add_books' %}"><button type="button" id="button_new" class="btn btn-outline-success">Добавить новую книгу &#128161;</button></a>
+</div>
+{% endblock BODY%}

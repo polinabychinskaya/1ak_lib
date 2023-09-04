@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block HEAD %}
+<style>
+.wrapper {
+    text-align: center;
+}
+
+#button {
+    position: absolute;
+    right: 30%;
+    left: 30%;
+    width: 40%;
+    border-color: #508d96;
+    color:#508d96;
+}
+
+#button:hover{
+    background-color: #508d96;
+    color:white;
+}
+
+#wrap{
+    margin: 4%;
+}
+
+</style>
+{% endblock HEAD %}
+{% block TITLE %}Обновить книгу{% endblock TITLE %}
+{% block BODY %}
+<div id="wrap">
+    <br>
+    <br>
+    <br>
+    <h2>Обновить данные о книге</h2>
+    <br>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="wrapper">
+            <br>
+            <button id="button" type="submit" class="btn btn-outline-warning">Обновить</button>
+            <br>
+        </div>
+    </form>
+    <br>
+    <br>
+</div>
+{% endblock BODY %}

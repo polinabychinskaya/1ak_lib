@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block HEAD %}
+<style>
+    #button{
+        border-color: #508d96;
+        color:#508d96;
+        margin-top: 20px;
+        margin-left: 20%;
+        width: 60%;
+    }
+
+    #signlink{
+        color:#508d96;
+        text-decoration: none;
+    }
+
+    #button:hover{
+        background-color: #508d96;
+        color:white
+    }
+    
+#wrap{
+    display: flex;
+    flex-direction: column;
+    padding: 4%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(238, 238, 238, 0.8);
+    border-radius: 5%;
+    position: absolute;
+    top: 30%;
+    left: 57%;
+}
+#wrapout{
+    height: 720px;
+    background-image: url("{% static 'img/bookimg.jpg' %}");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+</style>
+{% endblock HEAD %}
+{% block TITLE %}Вход{% endblock TITLE %}
+{% block BODY %}
+
+<div id="wrapout">
+    <div id="wrap">
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+<table>
+<tr>
+    <td><label>Логин:</label></td>
+    <td>{{ form.username }}</td>
+</tr>
+<tr>
+    <td><label>Пароль:</label></td>
+    <td>{{ form.password }}</td>
+</tr>
+</table>
+
+<input id="button" class="btn btn-outline-warning" type="submit" value="Войти в систему">
+<input type="hidden" name="next" value="{{ next }}">
+</form>
+<br>
+<p>Еще не <a id="signlink" href="{% url 'reader_registration' %}">зарегистрировались</a>?</p>
+
+</div>
+</div>
+{% endblock BODY %}

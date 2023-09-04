@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block HEAD %}
+<style>
+    #button{
+        border-color: #508d96;
+        color:#508d96;
+    }
+
+    #button:hover{
+        background-color: #508d96;
+        color:white
+    }
+    
+#wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 650px;
+}
+
+#wrapout{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:center;
+}
+@media screen and (max-width: 480px){
+    #wrapout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+#wrap{
+    display: flex;
+    flex-direction: column;
+    margin-left: 8%;
+    height: 650px;
+}
+#bye{
+    width: 90%;
+    margin-top: -175%;
+    margin-left: 8%;
+}
+h2{
+    margin-bottom: 80%;
+}
+#button{
+        border-color: #508d96;
+        color:#508d96;
+        margin-top: 25%;
+        margin-left: -16%;
+        width: 120%;
+    }
+}
+</style>
+{% endblock HEAD %}
+{% block TITLE %}Выйти{% endblock TITLE %}
+{% block BODY %}
+<br>
+<br>
+<div id="wrapout">
+<div id="wrap">
+    <h2>Спасибо, что были с нами! Хорошего дня!</h2>
+    <br>
+    <a id="link" href="{% url 'login' %}"><button id="button" type="button" class="btn btn-outline-warning">На главную</button></a>
+</div>
+<div>
+    <img id="bye" src="">
+</div>
+</div>
+{% endblock BODY %}

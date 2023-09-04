@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block TITLE %} Регистрация {% endblock TITLE %}
+{% block HEAD %} 
+<style>
+    h2{
+        margin-left: 42.5%;
+    }
+    #button{
+        border-color: #508d96;
+        color:#508d96;
+        margin-left: 20%;
+        width: 60%;
+    }
+    #button:hover{
+        background-color: #508d96;
+        color:white
+    }
+</style>
+{% endblock HEAD %}
+{% block BODY %}
+<div class="container">
+    <form method="POST" enctype="multipart/form-data"> 
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br>
+        <br>
+        <br>
+        <br>
+        <h2>Регистрация</h2>
+        <br>
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            <label>Имя пользователя</label>
+            <input type="text" class="form-control mt-2" name="username" placeholder="Введите имя пользователя" required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-6">
+            <label>Фамилия</label>
+            <input type="text" class="form-control mt-2" name="last_name" placeholder="Введите фамилию" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Имя</label>
+            <input type="text" class="form-control mt-2" name="first_name" placeholder="Введите имя" required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-6">
+            <label>Отчество</label>
+            <input type="text" class="form-control mt-2" name="patronymic" placeholder="Введите отчество" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Мобильный телефона</label>
+            <input type="text" class="form-control mt-2" name="phone" placeholder="Введите мобильный телефон" required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-6">
+            <label>Пароль</label>
+            <input type="password" class="form-control mt-2" name="password" placeholder="Введите пароль" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Подтверждение пароля</label>
+            <input type="password" class="form-control mt-2" name="confirm_password" placeholder="Подтвердить пароль" required>
+        </div>
+    </div>
+    <br>
+    <button id="button" type="submit" class="btn btn-outline-primary mt-4">Зарегистрироваться</button>
+</div>
+</form>
+<br>
+<br>
+{% endblock BODY %}
+{% block js %}
+<script>
+    {% if alert %}
+    alert("Регистрация прошла успешно!")
+    document.location = "/library"
+    {% endif %}
+</script>
+{% endblock %}
+

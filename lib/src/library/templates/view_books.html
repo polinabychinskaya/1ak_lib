@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block HEAD %}<link href="{% static 'css/productcard.css' %}" rel="stylesheet">
+<style>
+    #shop{
+    height: auto;
+    margin: 1.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#shophead{
+    position: absolute;
+    top: 18%;
+    left: 35%;
+}
+#author{
+    font-weight: normal;
+    font-size: small;
+}
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+  @media screen and (max-width: 480px){
+    .grid-container {
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: space-around;
+    margin-top: 30%;
+  }
+  #shop{
+    height: auto;
+    margin: 1.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#shophead{
+    font-size: 180%;
+    font-weight: bold;
+    position: absolute;
+    top: 10%;
+    left: 25%;
+}
+  }
+
+</style>
+{% endblock HEAD %}
+{% block TITLE %}Каталог книг{% endblock TITLE %}
+{% block BODY %}
+<body>
+<div id="shop">
+    <h2 id="shophead">Выберите свою книгу!</h2>
+    <div class="grid-container">
+        {% for i in books %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{ i.picture.url }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ i.name }} <p id="author">{{ i.author }}</p></h5>
+              {% if i.available == True %}
+              <p class="card-text">В наличии</p>
+              {% endif %}
+              <a href="{% url 'issue_book' %}" id="detail_button" class="btn btn-primary">Взять книгу!</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <br>
+    <br>
+</div>
+
+
+</body>
+{% endblock BODY %}

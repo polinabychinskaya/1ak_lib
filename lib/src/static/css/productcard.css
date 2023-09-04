@@ -1,0 +1,48 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: space-around;
+    margin-top: 15%;
+  }
+
+.card{
+    margin-top: 10% !important;
+}
+
+#detail_button{
+    color: #508d96;
+    border-color: #508d96;
+    background-color: white;
+}
+
+#detail_button:hover{
+    color: white;
+    background-color: #508d96;
+}
+
+
+
+  #add_book{
+    color: #508d96;
+    border-color: #508d96;
+    width: 30%;
+    position: relative;
+    top: 17%;
+    left: 38%;
+  }
+
+  #add_book:hover{
+    color: white;
+    background-color: #508d96;
+}
+
+
+
+#shophead{
+    font-size: 250%;
+    font-weight: bold;
+    position: absolute;
+    top: 18%;
+    left: 40%;
+}
+

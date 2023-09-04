@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block HEAD %}
+<style>
+.wrapper {
+    text-align: center;
+}
+
+#button {
+    position: absolute;
+    right: 30%;
+    left: 30%;
+    width: 40%;
+    border-color: #508d96;
+    color:#508d96;
+}
+
+#button:hover{
+    background-color: #508d96;
+    color:white;
+}
+
+#wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+}
+
+
+</style>
+{% endblock HEAD %}
+{% block TITLE %}Удаление записи{% endblock TITLE %}
+{% block BODY %}
+<div id="wrap">
+    <br>
+    <br>
+<h2>Вы уверены, что хотите удалить эту запись?</h2>
+<form action="" method="post">
+    {% csrf_token %}
+    <br>
+    <div class="wrapper">
+        <button id="button" type="submit" class="btn btn-outline-warning">Да, удалить</button>
+    </div>
+</form>
+</div>
+{% endblock BODY %}

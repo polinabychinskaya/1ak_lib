@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block HEAD %}
+<style>
+    #button{
+        border-color: #508d96;
+        color:#508d96;
+    }
+
+    #button:hover{
+        background-color: #508d96;
+        color:white
+    }
+    
+#wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 650px;
+}
+
+#wrapout{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:center;
+}
+
+</style>
+{% endblock HEAD %}
+{% block TITLE %}Успех{% endblock TITLE %}
+{% block BODY %}
+<br>
+<br>
+<div id="wrapout">
+<div id="wrap">
+    <h2>Операция выполнена успешно!</h2>
+    <br>
+    <a id="link" href="{% url 'login' %}"><button id="button" type="button" class="btn btn-outline-warning">На главную</button></a>
+</div>
+</div>
+{% endblock BODY %}

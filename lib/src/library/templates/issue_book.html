@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block HEAD %}
+<style>
+    #wrap{
+        margin: 4%;
+    }
+    #button {
+    position: absolute;
+    right: 30%;
+    left: 30%;
+    width: 40%;
+    border-color: #508d96;
+    color:#508d96;
+}
+
+#button:hover{
+    background-color: #508d96;
+    color:white;
+}
+</style>
+{% endblock HEAD %}
+{% block BODY %}
+<div id="wrap">
+
+    <form method="POST"> 
+        {% csrf_token %}
+        <div class="form-group">
+            <br>
+          <label class="control-label col-xs-4">{{ form.label_tag }}</label>
+          <div class="col-xs-8 mt-2">
+            {{ form|crispy }}
+           </div>
+        </div>
+        
+    <button id="button" type="submit" class="btn btn-outline-primary mt-4">Взять книгу!</button>
+    <br>
+    <br>
+</form>
+</div>
+<script>
+    {% if alert %}
+    alert("Книга успешно добавлена! Нажмите 'ок', чтобы продолжить")
+    document.location = "{% url 'view_books' %}"
+    {% endif %}
+</script>
+{% endblock BODY %}
+

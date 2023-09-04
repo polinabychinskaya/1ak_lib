@@ -1,0 +1,41 @@
+#wrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: center
+}
+
+#wrap_wrap{
+    display: flex;
+    flex-direction: column;
+    margin: 1.5%;
+    height: 700px;
+    border-radius: 2.5%;
+    background-color: #d8d4dcf2;
+}
+
+#pic{
+    margin-right: 25%;
+}
+
+#infohead{
+    font-size: 280%;
+    font-weight: bold;
+}
+
+#infobody{
+    font-size: 100%;
+}
+
+#productpic{
+    width: 200px;
+}
+
+#description{
+    margin-left: 3%;
+    margin-right: 3%;
+    font-size: 100%;
+
+}
+
+
+
