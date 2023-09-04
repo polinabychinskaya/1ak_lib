@@ -10,6 +10,9 @@ class Author(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return '/success'
+
 class Book(models.Model):
     picture = models.ImageField(
         verbose_name='Картинка',

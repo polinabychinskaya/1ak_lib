@@ -26,6 +26,7 @@ urlpatterns = [
     path("",  views.LoginView.as_view(), name="login"),
     path("success/",  views.success, name="success"),
     path("add_books/", views.BookCreateView.as_view(), name="add_books"),
+    path("add_author/", views.AuthorCreateView.as_view(), name="add_author"),
     path("update_book/<int:pk>/", views.BookUpdateView.as_view(), name="update_book"),
     path("admin_book/", views.BookListView.as_view(), name="admin_book"),
     path("view_books/", views.view_books, name="view_books"),
